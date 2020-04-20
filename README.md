@@ -17,6 +17,6 @@ Erläuterung:
 
 ```bash
 for f in *.json; \
-  do curl -X POST -H "Content-Type: application/json" -d @$f http://lha-dev.imise.uni-leipzig.de:8091/hapi-fhir-jpaserver/fhr; \
+  do curl -X POST -H "Content-Type: application/json" -d @$f http://lha-dev.imise.uni-leipzig.de:8091/hapi-fhir-jpaserver/fhir; \
 done
 ```
