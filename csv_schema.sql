@@ -89,7 +89,7 @@ CREATE TABLE observations (
     ENCOUNTER uuid,
     CODE text,
     DESCRIPTION text,
-    VALUE double precision,
+    VALUE text,
     UNITS text,
     TYPE text
 );
