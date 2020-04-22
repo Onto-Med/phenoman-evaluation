@@ -3,7 +3,7 @@ CREATE TABLE allergies (
     STOP date,
     PATIENT uuid,
     ENCOUNTER uuid,
-    CODE bigint,
+    CODE text,
     DESCRIPTION text
 );
 
@@ -13,7 +13,7 @@ CREATE TABLE careplans (
     STOP date,
     PATIENT uuid,
     ENCOUNTER uuid,
-    CODE bigint,
+    CODE text,
     DESCRIPTION text,
     REASONCODE text,
     REASONDESCRIPTION text
@@ -24,7 +24,7 @@ CREATE TABLE conditions (
     STOP date,
     PATIENT uuid,
     ENCOUNTER uuid,
-    CODE bigint,
+    CODE text,
     DESCRIPTION text
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE encounters (
     PROVIDER uuid,
     PAYER uuid,
     ENCOUNTERCLASS text,
-    CODE bigint,
+    CODE text,
     DESCRIPTION text,
     BASE_ENCOUNTER_COST double precision,
     TOTAL_CLAIM_COST double precision,
@@ -62,7 +62,7 @@ CREATE TABLE immunizations (
     DATE date,
     PATIENT uuid,
     ENCOUNTER uuid,
-    CODE bigint,
+    CODE text,
     DESCRIPTION text,
     BASE_COST double precision
 );
@@ -73,7 +73,7 @@ CREATE TABLE medications (
     PATIENT uuid,
     PAYER uuid,
     ENCOUNTER uuid,
-    CODE bigint,
+    CODE text,
     DESCRIPTION text,
     BASE_COST double precision,
     PAYER_COVERAGE double precision,
@@ -172,10 +172,10 @@ CREATE TABLE procedures (
     DATE date,
     PATIENT uuid,
     ENCOUNTER uuid,
-    CODE bigint,
+    CODE text,
     DESCRIPTION text,
     BASE_COST double precision,
-    REASONCODE bigint,
+    REASONCODE text,
     REASONDESCRIPTION text
 );
 
