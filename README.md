@@ -44,12 +44,12 @@ java -cp phenoman-0.3.3.jar;. MIBE
 ## Gold Standard SQL
 
 ```sql
-SELECT p.id
+SELECT id
 FROM patients p
 WHERE
-  p.gender = 'M'
-  AND p.birthdate <= CURRENT_DATE - interval '40 years'
-  AND p.birthdate >= CURRENT_DATE - interval '65 years'
+  gender = 'M'
+  AND birthdate <= CURRENT_DATE - interval '40 years'
+  AND birthdate >= CURRENT_DATE - interval '65 years'
   AND EXISTS (
     SELECT 1
     FROM observations
