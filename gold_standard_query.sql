@@ -5,7 +5,8 @@ WHERE
   gender = 'M'
 
   -- inclusion: age between 40 and 65
-  AND extract(year FROM age(birthdate)) BETWEEN 40 AND 65
+  AND extract(year FROM age(birthdate)) >= 40
+  AND extract(year FROM age(birthdate)) < 66
 
   -- inclusion: at least one observation of systolic blood pressure >= 130 mmHg in the last year
   AND EXISTS (
