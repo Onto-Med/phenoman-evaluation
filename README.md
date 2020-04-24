@@ -33,7 +33,7 @@ Use the SQL file `csv_schema.sql` to create the required tables and import the C
 
 ## Executing the PhenoMan Test Script
 
-Place a release of the PhenoMan inside the `phenoman_test` folder (Version 0.3.3 is used here as an example).
+Place a release of the PhenoMan inside the `phenoman_test` folder (Version 0.3.3 is used here as an example) and execute the following CLI lines (Java SDK required):
 
 ```bash
 cd phenoman_test
