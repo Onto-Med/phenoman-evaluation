@@ -27,8 +27,8 @@ The following Linux Shell script will use [cURL](https://curl.haxx.se) to send t
 
 cd synthea/output/fhir
 
-for f in *.json; \
-  do curl -X POST -H "Content-Type: application/json" -d @$f <SERVER_URL>; \
+for f in *.json;
+  do curl -X POST -H "Content-Type: application/json" -d @$f <SERVER_URL>;
 done
 ```
 
