@@ -1,6 +1,6 @@
 ﻿# Evaluating the PhenoMan
 
-## Createing a Population with Synthea(TM):
+## Creating a Population with Synthea(TM):
 
 1. Download Synthea(TM) from https://synthetichealth.github.io/synthea/build/libs/synthea-with-dependencies.jar
    and place it inside the `synthea` folder.
