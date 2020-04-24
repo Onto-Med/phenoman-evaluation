@@ -51,7 +51,7 @@ public class MIBE {
 		sbpIC.setValidityPeriod(1, TimeEntity.YEAR);
 		sbpIC.setEligibilityCriterion(EligibilityCriterion.INCLUSION);
 		sbpIC.addUnit("mm[Hg]");
-		sbpIC.addCode(CodeSystem.SNOMED, "8480-6", "Systolic blood pressure");
+		sbpIC.addCode(CodeSystem.LOINC, "8480-6", "Systolic blood pressure");
 		man.addAbstractSinglePhenotype(sbpIC);
 		man.addRestrictedSinglePhenotype(sbpIC.createRestrictedPhenotype(new DecimalRangeLimited().setMinInclusive(130)));
 
