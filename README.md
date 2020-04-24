@@ -1,6 +1,6 @@
 ﻿# Evaluating the PhenoMan
 
-## Creating a Population with Synthea(TM):
+## Creating a population with Synthea(TM):
 
 1. Download Synthea(TM) from https://synthetichealth.github.io/synthea/build/libs/synthea-with-dependencies.jar
    and place it inside the `synthea` folder.
@@ -17,7 +17,7 @@ Detailed description of the arguments:
 
 Resulting patient data will be placed inside the folders `synthea/output/fhir` and `synthea/output/csv`.
 
-## Importing the FHIR Resources into the LHA-Dev FHIR Testserver
+## Importing the FHIR resources into the LHA-Dev FHIR Testserver
 
 The following commands contain Linux Bash syntax.
 ```bash
@@ -31,7 +31,7 @@ done
 
 Use the SQL file `csv_schema.sql` to create the required tables and import the CSV files (e.g., with pgAdmin's import functionality).
 
-## Executing the PhenoMan Test Script
+## Executing the PhenoMan test script
 
 Place a release of the PhenoMan inside the `phenoman_test` folder (Version 0.3.3 is used here as an example) and execute the following CLI lines (Java SDK required):
 
@@ -41,33 +41,6 @@ javac -cp phenoman-0.3.3.jar MIBE.java
 java -cp phenoman-0.3.3.jar;. MIBE
 ```
 
-## Gold Standard SQL
+## Execute Gold Standard SQL and compare results with PhenoMan
 
-```sql
-SELECT DISTINCT id
-FROM patients p
-WHERE
-  -- inclusion: male subjects
-  gender = 'M'
-
-  -- inclusion: age between 40 and 65
-  AND (CURRENT_DATE - birthdate) / 365.25 BETWEEN 40 AND 65
-
-  -- inclusion: at least one observation of systolic blood pressure >= 130 mmHg in the last year
-  AND EXISTS (
-    SELECT 1
-    FROM observations
-      WHERE patient = p.id
-        AND code = '8480-6'
-        AND value::double precision >= 130
-        AND date >= CURRENT_DATE - interval '1 years'
-  )
-
-  -- exclusion: myocardial infarction or stroke
-  AND NOT EXISTS (
-    SELECT 1
-    FROM conditions
-      WHERE patient = p.id
-        AND code IN ('22298006', '230690007')
-  );
-```
+Execute the SQL query within `gold_standard_script.sql`. The Script will return the number of matching patients.
