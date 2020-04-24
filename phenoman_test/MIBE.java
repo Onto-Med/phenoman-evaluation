@@ -37,7 +37,7 @@ public class MIBE {
 		ageIC.addUnit(AgeCode.UNIT);
 		ageIC.addCode(new AgeCode());
 		man.addAbstractSinglePhenotype(ageIC);
-		man.addRestrictedSinglePhenotype(ageIC.createRestrictedPhenotype(new DecimalRangeLimited().setMinInclusive(40).setMaxInclusive(65)));
+		man.addRestrictedSinglePhenotype(ageIC.createRestrictedPhenotype(new DecimalRangeLimited().setMinInclusive(40).setMaxExclusive(66)));
 		
 		AbstractSingleStringPhenotype genderIC = new AbstractSingleStringPhenotype("Gender_IC", "Gender Inclusion Criterion", "MIBE");
 		genderIC.setResourceType(RTPatientGender.class);
@@ -69,7 +69,7 @@ public class MIBE {
 		
 		man.write();
 
-		RestrictedSinglePhenotype ageICr = man.getRestrictedSinglePhenotype("Age_IC_s_ge_40_le_65");
+		RestrictedSinglePhenotype ageICr = man.getRestrictedSinglePhenotype("Age_IC_s_ge_40_l_66");
 		RestrictedSinglePhenotype genderICr = man.getRestrictedSinglePhenotype("Gender_IC_s_Male");
 		RestrictedSinglePhenotype sbpICr = man.getRestrictedSinglePhenotype("Systolic_Blood_Pressure_IC_s_ge_130");
 		

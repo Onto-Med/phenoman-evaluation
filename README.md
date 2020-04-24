@@ -43,7 +43,7 @@ Place a release of the PhenoMan inside the `phenoman_test` folder (Version 0.3.3
 ```bash
 cd phenoman_test
 javac -cp phenoman-0.3.3.jar MIBE.java
-java -cp phenoman-0.3.3.jar;. MIBE
+java -cp "phenoman-0.3.3.jar;." MIBE
 ```
 
 The number of matching patients will be printed to STDOUT.
