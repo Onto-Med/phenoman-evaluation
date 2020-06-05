@@ -19,7 +19,7 @@ Resulting patient data will be placed inside the folders `synthea/output/fhir` a
 
 ## Importing the FHIR resources into a FHIR Server
 
-We used [HAPI FHIR JPA-Server Starter](https://github.com/hapifhir/hapi-fhir-jpaserver-starter) for this evaluation (http://lha-dev.imise.uni-leipzig.de:8091/hapi-fhir-jpaserver/fhir).
+We used [HAPI FHIR JPA-Server Starter](https://github.com/hapifhir/hapi-fhir-jpaserver-starter) for this evaluation (http://lha-dev.imise.uni-leipzig.de:8091/hapi-fhir-jpaserver/fhir). There is a Docker image available: [knoppiks/hapi-jpa](https://hub.docker.com/r/knoppiks/hapi-jpa)
 
 The following Linux Shell script will use [cURL](https://curl.haxx.se) to send the FHIR bundles to the FHIR server (replace "<SERVER\_URL>" with the actual URL):
 ```bash
