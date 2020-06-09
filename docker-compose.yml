@@ -8,7 +8,9 @@ services:
     environment:
       POSTGRES_PASSWORD: example
     volumes:
+      - ./csv_db:/docker-entrypoint-initdb.d
       - ./synthea/output/csv:/csv
+
   hapi_jpa:
     image: knoppiks/hapi-jpa
     ports:
