@@ -180,7 +180,7 @@ CREATE TABLE procedures (
 );
 
 CREATE TABLE providers (
-    id           UUID              PRIMARY KEY,
+    id           UUID,
     organization UUID,
     name         TEXT,
     gender       TEXT,
