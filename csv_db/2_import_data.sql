@@ -1,0 +1,14 @@
+COPY allergies         FROM '/csv/allergies.csv'         CSV HEADER QUOTE '"' ESCAPE '''';
+COPY careplans         FROM '/csv/careplans.csv'         CSV HEADER QUOTE '"' ESCAPE '''';
+COPY conditions        FROM '/csv/conditions.csv'        CSV HEADER QUOTE '"' ESCAPE '''';
+COPY encounters        FROM '/csv/encounters.csv'        CSV HEADER QUOTE '"' ESCAPE '''';
+COPY imaging_studies   FROM '/csv/imaging_studies.csv'   CSV HEADER QUOTE '"' ESCAPE '''';
+COPY immunizations     FROM '/csv/immunizations.csv'     CSV HEADER QUOTE '"' ESCAPE '''';
+COPY medications       FROM '/csv/medications.csv'       CSV HEADER QUOTE '"' ESCAPE '''';
+COPY observations      FROM '/csv/observations.csv'      CSV HEADER QUOTE '"' ESCAPE '''';
+COPY organizations     FROM '/csv/organizations.csv'     CSV HEADER QUOTE '"' ESCAPE '''';
+COPY patients          FROM '/csv/patients.csv'          CSV HEADER QUOTE '"' ESCAPE '''';
+COPY payer_transitions FROM '/csv/payer_transitions.csv' CSV HEADER QUOTE '"' ESCAPE '''';
+COPY payers            FROM '/csv/payers.csv'            CSV HEADER QUOTE '"' ESCAPE '''';
+COPY procedures        FROM '/csv/procedures.csv'        CSV HEADER QUOTE '"' ESCAPE '''';
+COPY providers         FROM '/csv/providers.csv'         CSV HEADER QUOTE '"' ESCAPE '''';
