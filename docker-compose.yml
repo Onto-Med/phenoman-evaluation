@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - ./synthea/output/csv:/csv
+  hapi_jpa:
+    image: knoppiks/hapi-jpa
+    ports:
+      - 80:8080
+    volumes:
+      - ./synthea/output/fhir:/fhir
