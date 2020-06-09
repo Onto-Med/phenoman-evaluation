@@ -17,3 +17,4 @@ services:
       - 80:8080
     volumes:
       - ./synthea/output/fhir:/fhir
+      - ./scripts:/scripts
