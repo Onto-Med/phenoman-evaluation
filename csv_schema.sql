@@ -1,195 +1,201 @@
 CREATE TABLE allergies (
-    START date,
-    STOP date,
-    PATIENT uuid,
-    ENCOUNTER uuid,
-    CODE text,
-    DESCRIPTION text
+    start       DATE,
+    stop        DATE,
+    patient     UUID,
+    encounter   UUID,
+    code        TEXT,
+    description TEXT
 );
 
 CREATE TABLE careplans (
-    Id uuid PRIMARY KEY,
-    START date,
-    STOP date,
-    PATIENT uuid,
-    ENCOUNTER uuid,
-    CODE text,
-    DESCRIPTION text,
-    REASONCODE text,
-    REASONDESCRIPTION text
+    id                    UUID  PRIMARY KEY,
+    start                 DATE,
+    stop                  DATE,
+    patient               UUID,
+    encounter             UUID,
+    code                  TEXT,
+    description           TEXT,
+    reasoncode            TEXT,
+    reasoncodedescription TEXT
 );
 
 CREATE TABLE conditions (
-    START date,
-    STOP date,
-    PATIENT uuid,
-    ENCOUNTER uuid,
-    CODE text,
-    DESCRIPTION text
+    start       DATE,
+    stop        DATE,
+    patient     UUID,
+    encounter   UUID,
+    code        TEXT,
+    description TEXT
 );
 
 CREATE TABLE encounters (
-    Id uuid PRIMARY KEY,
-    START date,
-    STOP date,
-    PATIENT uuid,
-    PROVIDER uuid,
-    PAYER uuid,
-    ENCOUNTERCLASS text,
-    CODE text,
-    DESCRIPTION text,
-    BASE_ENCOUNTER_COST double precision,
-    TOTAL_CLAIM_COST double precision,
-    PAYER_COVERAGE double precision,
-    REASONCODE text,
-    REASONDESCRIPTION text
+    id                  UUID              PRIMARY KEY,
+    start               DATE,
+    stop                DATE,
+    patient             UUID,
+    provider            UUID,
+    payer               UUID,
+    encounterclass      TEXT,
+    code                TEXT,
+    description         TEXT,
+    base_encounter_cost DOUBLE PRECISION,
+    total_claim_cost    DOUBLE PRECISION,
+    payer_coverage      DOUBLE PRECISION,
+    reasoncode          TEXT,
+    reasondescription   TEXT
 );
 
 CREATE TABLE imaging_studies (
-    Id uuid PRIMARY KEY,
-    DATE date,
-    PATIENT uuid,
-    ENCOUNTER uuid,
-    BODYSITE_CODE text,
-    BODYSITE_DESCRIPTION text,
-    MODALITY_CODE text,
-    MODALITY_DESCRIPTION text,
-    SOP_CODE text,
-    SOP_DESCRIPTION text
+    id                   UUID  PRIMARY KEY,
+    date                 DATE,
+    patient              UUID,
+    encounter            UUID,
+    bodysite_code        TEXT,
+    bodysite_description TEXT,
+    modality_code        TEXT,
+    modality_description TEXT,
+    sop_code             TEXT,
+    sop_description      TEXT
 );
 
 CREATE TABLE immunizations (
-    DATE date,
-    PATIENT uuid,
-    ENCOUNTER uuid,
-    CODE text,
-    DESCRIPTION text,
-    BASE_COST double precision
+    date        DATE,
+    patient     UUID,
+    encounter   UUID,
+    code        TEXT,
+    description TEXT,
+    base_cost   DOUBLE PRECISION
 );
 
 CREATE TABLE medications (
-    START date,
-    STOP date,
-    PATIENT uuid,
-    PAYER uuid,
-    ENCOUNTER uuid,
-    CODE text,
-    DESCRIPTION text,
-    BASE_COST double precision,
-    PAYER_COVERAGE double precision,
-    DISPENSES double precision,
-    TOTALCOST double precision,
-    REASONCODE text,
-    REASONDESCRIPTION text
+    start             DATE,
+    stop              DATE,
+    patient           UUID,
+    payer             UUID,
+    encounter         UUID,
+    code              TEXT,
+    description       TEXT,
+    base_cost         DOUBLE PRECISION,
+    payer_coverage    DOUBLE PRECISION,
+    dispenses         DOUBLE PRECISION,
+    totalcost         DOUBLE PRECISION,
+    reasoncode        TEXT,
+    reasondescription TEXT
 );
 
 CREATE TABLE observations (
-    DATE date,
-    PATIENT uuid,
-    ENCOUNTER uuid,
-    CODE text,
-    DESCRIPTION text,
-    VALUE text,
-    UNITS text,
-    TYPE text
+    date        DATE,
+    patient     UUID,
+    encounter   UUID,
+    code        TEXT,
+    description TEXT,
+    value       TEXT,
+    units       TEXT,
+    type        TEXT
 );
 
 CREATE TABLE organizations (
-    Id uuid PRIMARY KEY,
-    NAME text,
-    ADDRESS text,
-    CITY text,
-    STATE text,
-    ZIP text,
-    LAT double precision,
-    LON double precision,
-    PHONE text,
-    REVENUE double precision,
-    UTILIZATION double precision
+    id          UUID              PRIMARY KEY,
+    name        TEXT,
+    address     TEXT,
+    city        TEXT,
+    state       TEXT,
+    zip         TEXT,
+    lat         DOUBLE PRECISION,
+    lon         DOUBLE PRECISION,
+    phone       TEXT,
+    revenue     DOUBLE PRECISION,
+    utilization DOUBLE PRECISION
 );
 
 CREATE TABLE patients (
-    Id uuid PRIMARY KEY,
-    BIRTHDATE date,
-    DEATHDATE date,
-    SSN text,
-    DRIVERS text,
-    PASSPORT text,
-    PREFIX text,
-    FIRST text,
-    LAST text,
-    SUFFIX text,
-    MAIDEN text,
-    MARITAL text,
-    RACE text,
-    ETHNICITY text,
-    GENDER text,
-    BIRTHPLACE text,
-    ADDRESS text,
-    CITY text,
-    STATE text,
-    COUNTY text,
-    ZIP text,
-    LAT double precision,
-    LON double precision,
-    HEALTHCARE_EXPENSES double precision,
-    HEALTHCARE_COVERAGE double precision
+    id                  UUID             PRIMARY KEY,
+    birthdate           DATE,
+    deathdate           DATE,
+    ssn                 TEXT,
+    drivers             TEXT,
+    passport            TEXT,
+    prefix              TEXT,
+    first               TEXT,
+    last                TEXT,
+    suffix              TEXT,
+    maiden              TEXT,
+    marital             TEXT,
+    race                TEXT,
+    ethnicity           TEXT,
+    gender              TEXT,
+    birthplace          TEXT,
+    address             TEXT,
+    city                TEXT,
+    state               TEXT,
+    county              TEXT,
+    zip                 TEXT,
+    lat                 DOUBLE PRECISION,
+    lon                 DOUBLE PRECISION,
+    healthcare_expenses DOUBLE PRECISION,
+    healthcare_coverage DOUBLE PRECISION
 );
 
 CREATE TABLE payer_transitions (
-    PATIENT uuid,
-    START_YEAR integer,
-    END_YEAR integer,
-    PAYER uuid,
-    OWNERSHIP text
+    patient    UUID,
+    START_YEAR INTEGER,
+    end_year   INTEGER,
+    payer      UUID,
+    ownership  TEXT
 );
 
 CREATE TABLE payers (
-    Id uuid PRIMARY KEY,
-    NAME text,
-    ADDRESS text,
-    CITY text,
-    STATE_HEADQUARTERED text,
-    ZIP text,
-    PHONE text,
-    AMOUNT_COVERED double precision,
-    AMOUNT_UNCOVERED double precision,
-    REVENUE double precision,
-    COVERED_ENCOUNTERS integer,
-    UNCOVERED_ENCOUNTERS integer,
-    COVERED_MEDICATIONS integer,
-    UNCOVERED_MEDICATIONS integer,
-    COVERED_PROCEDURES integer,
-    UNCOVERED_PROCEDURES integer,
-    COVERED_IMMUNIZATIONS integer,
-    UNCOVERED_IMMUNIZATIONS integer,
-    UNIQUE_CUSTOMERS integer,
-    QOLS_AVG double precision,
-    MEMBER_MONTHS integer
+    id                      UUID              PRIMARY KEY,
+    name                    TEXT,
+    address                 TEXT,
+    city                    TEXT,
+    state_headquartered     TEXT,
+    zip                     TEXT,
+    phone                   TEXT,
+    amount_covered          DOUBLE PRECISION,
+    amount_uncovered        DOUBLE PRECISION,
+    revenue                 DOUBLE PRECISION,
+    covered_encounters      INTEGER,
+    uncovered_encounters    INTEGER,
+    covered_medications     INTEGER,
+    uncovered_medications   INTEGER,
+    covered_procedures      INTEGER,
+    uncovered_procedures    INTEGER,
+    covered_immunizations   INTEGER,
+    uncovered_immunizations INTEGER,
+    unique_customers        INTEGER,
+    qols_avg                DOUBLE PRECISION,
+    member_months           INTEGER
 );
 
 CREATE TABLE procedures (
-    DATE date,
-    PATIENT uuid,
-    ENCOUNTER uuid,
-    CODE text,
-    DESCRIPTION text,
-    BASE_COST double precision,
-    REASONCODE text,
-    REASONDESCRIPTION text
+    date              DATE,
+    patient           UUID,
+    encounter         UUID,
+    code              TEXT,
+    description       TEXT,
+    base_cost         DOUBLE PRECISION,
+    reasoncode        TEXT,
+    reasondescription TEXT
 );
 
 CREATE TABLE providers (
-    Id uuid,
-    ORGANIZATION uuid,
-    NAME text,
-    GENDER text,
-    SPECIALITY text,
-    ADDRESS text,
-    CITY text,
-    STATE text,
-    ZIP text,
-    LAT double precision,
-    LON double precision,
-    UTILIZATION integer
+    id           UUID              PRIMARY KEY,
+    organization UUID,
+    name         TEXT,
+    gender       TEXT,
+    speciality   TEXT,
+    address      TEXT,
+    city         TEXT,
+    state        TEXT,
+    zip          TEXT,
+    lat          DOUBLE PRECISION,
+    lon          DOUBLE PRECISION,
+    utilization  INTEGER
 );
+
+CREATE INDEX ON TABLE patients (gender);
+CREATE INDEX ON TABLE observations (patient);
+CREATE INDEX ON TABLE observations (code);
+CREATE INDEX ON TABLE conditions (patient);
+CREATE INDEX ON TABLE conditions (code);
