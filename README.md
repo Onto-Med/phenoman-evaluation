@@ -7,7 +7,7 @@
 2. Open a terminal and execute the following commands (Java JRE or JDK required, replace ":" with ";" on a Windows machine):
 ```bash
 cd synthea
-java -jar synthea-with-dependencies.jar -s 43627 -p 1000000 -m hypertension:metabolic*:wellness*:asthma:bronchitis:allerg* -c synthea.properties
+java -jar synthea-with-dependencies.jar -s 43627 -p 100000 -m hypertension:metabolic*:wellness*:asthma:bronchitis:allerg* -c synthea.properties
 ```
 
 Detailed description of the arguments:
