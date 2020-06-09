@@ -194,8 +194,8 @@ CREATE TABLE providers (
     utilization  INTEGER
 );
 
-CREATE INDEX ON TABLE patients (gender);
-CREATE INDEX ON TABLE observations (patient);
-CREATE INDEX ON TABLE observations (code);
-CREATE INDEX ON TABLE conditions (patient);
-CREATE INDEX ON TABLE conditions (code);
+CREATE INDEX ON patients (gender);
+CREATE INDEX ON observations (patient);
+CREATE INDEX ON observations (code);
+CREATE INDEX ON conditions (patient);
+CREATE INDEX ON conditions (code);
