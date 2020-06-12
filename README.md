@@ -9,6 +9,7 @@
 cd synthea
 java -jar synthea-with-dependencies.jar -s 43627 -p 10000 -m hypertension;metabolic*;wellness*;asthma;bronchitis;allerg* -c synthea.properties
 ```
+Output in STDOUT should be: `{alive=10000, dead=247}`
 
 Detailed description of the arguments:
 * `-s 43627` -> set a seed "43627", so that the generated patient data is reproducible
