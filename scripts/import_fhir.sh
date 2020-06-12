@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /fhir
+cd synthea/output/fhir
 
 for f in *.json;
   echo @$f;
