@@ -42,12 +42,12 @@ docker volume create --name=csv-db
 docker-compose up -d csv-db
 ```
 
-## Executing the PhenoMan test script
+## Executing the PhenoMan test scripts
 
-Place a release of the PhenoMan inside the `phenoman_test` folder (Version 0.3.3 is used here as an example) and execute the Shell script `scripts/execute_phenoman.sh` (Java JDK required).
+-- TODO --
 
 The number of matching patients will be printed to STDOUT.
 
 ## Executing Gold Standard SQL and comparing results with PhenoMan
 
-Execute the SQL query `scripts/gold_standard_query.sql`. The Script will return the number of matching patients. The number should match the result of PhenoMan.
+Execute the SQL queries in `scripts/queries`. The queries will return numbers of matching patients. The numbers should match the result of PhenoMan.

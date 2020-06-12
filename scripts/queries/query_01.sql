@@ -1,13 +1,13 @@
 SELECT count(DISTINCT id)
 FROM (
-		SELECT p.id
-		FROM patients p
-			JOIN observations ON (patient = p.id)
+		SELECT id
+		FROM patients
+			JOIN observations ON (patient = id)
 		WHERE
 			-- inclusion: male subjects
 			gender = 'M'
 
-			-- inclusion: age between 40 and 65
+			-- inclusion: age >= 40 and <= 65 years
 			AND extract(year FROM age(birthdate)) BETWEEN 40 AND 65
 
 			-- inclusion: at least one observation of systolic blood pressure >= 130 mmHg in the last year
