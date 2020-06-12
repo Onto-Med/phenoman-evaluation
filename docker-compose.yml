@@ -33,7 +33,7 @@ services:
     environment:
       CATALINA_OPTS: -Dhapi.properties=/hapi.properties
     volumes:
-      - ./hapi.properties:/hapi.properties
+      - ./hapi-jpa/hapi.properties:/hapi.properties
     links:
       - hapi-db
 
