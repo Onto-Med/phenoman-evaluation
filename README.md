@@ -12,7 +12,7 @@ java -jar synthea-with-dependencies.jar -s 43627 -p 10000 -m hypertension;metabo
 
 Detailed description of the arguments:
 * `-s 43627` -> set a seed "43627", so that the generated patient data is reproducible
-* `-p 1000` -> number of patients the population will consist of
+* `-p 10000` -> number of patients the population will consist of
 * `-c synthea.properties` -> path to a configurationfile with additional configurations for Synthea(TM)
 
 Resulting patient data will be placed inside the folders `synthea/output/fhir` and `synthea/output/csv`.
