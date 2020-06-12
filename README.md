@@ -15,7 +15,7 @@ Detailed description of the arguments:
 * `-s 43627` -> set a seed "43627", so that the generated patient data is reproducible
 * `-p 10000` -> number of patients the population will consist of
 * `-m ...` -> Synthea modules filter
-* `-c synthea.properties` -> path to a configurationfile with additional configurations for Synthea(TM)
+* `-c synthea.properties` -> path to configuration file with additional configurations for Synthea(TM)
 
 Resulting patient data will be placed inside the folders `synthea/output/fhir` and `synthea/output/csv`.
 
@@ -35,7 +35,7 @@ After the server has started (check `docker-compose logs -f hapi-jpa` to verify 
 
 ## Importing the CSV files into a PostgreSQL database
 
-When starting the Docker service `csv-db` all CSV files will be imported into the PostgreSQL database (this may take several minutes).
+When starting the Docker service `csv-db`, all CSV files will be imported into the PostgreSQL database (this may take several minutes).
 
 ```sh
 docker volume create --name=csv-db
@@ -48,6 +48,6 @@ docker-compose up -d csv-db
 
 The number of matching patients will be printed to STDOUT.
 
-## Executing Gold Standard SQL and comparing results with PhenoMan
+## Executing test SQL queries and comparing results with PhenoMan
 
 Execute the SQL queries in `scripts/queries`. The queries will return numbers of matching patients. The numbers should match the result of PhenoMan.
