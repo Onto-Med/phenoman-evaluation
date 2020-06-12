@@ -3,7 +3,7 @@
 ## Creating a population with Synthea(TM):
 
 1. Download Synthea(TM) from https://synthetichealth.github.io/synthea/build/libs/synthea-with-dependencies.jar
-   and place it inside the `synthea` folder.
+   and place it inside the `synthea` folder. At the time of this evaluation `v2.5.0` was the latest release.
 2. Open a terminal and execute the following commands (Java JRE or JDK required, replace ":" with ";" on a Windows machine):
 ```bash
 cd synthea
