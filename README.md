@@ -7,7 +7,7 @@
 2. Open a terminal and execute the following commands (Java JRE or JDK required, replace ":" with ";" on a Windows machine):
 ```bash
 cd synthea
-java -jar synthea-with-dependencies.jar -s 43627 -p 100000 -m hypertension:metabolic*:wellness*:asthma:bronchitis:allerg* -c synthea.properties
+java -jar synthea-with-dependencies.jar -s 43627 -p 10000 -m hypertension;metabolic*;wellness*;asthma;bronchitis;allerg* -c synthea.properties
 ```
 
 Detailed description of the arguments:
@@ -19,35 +19,33 @@ Resulting patient data will be placed inside the folders `synthea/output/fhir` a
 
 ## Importing the FHIR resources into a FHIR Server
 
-We used [HAPI FHIR JPA-Server Starter](https://github.com/hapifhir/hapi-fhir-jpaserver-starter) for this evaluation (http://lha-dev.imise.uni-leipzig.de:8091/hapi-fhir-jpaserver/fhir). There is a Docker image available: [knoppiks/hapi-jpa](https://hub.docker.com/r/knoppiks/hapi-jpa)
+We used [HAPI FHIR JPA-Server Starter](https://github.com/hapifhir/hapi-fhir-jpaserver-starter) for this evaluation.
+There is a Docker image available: [knoppiks/hapi-jpa](https://hub.docker.com/r/knoppiks/hapi-jpa)
 
-The following Linux Shell script will use [cURL](https://curl.haxx.se) to send the FHIR bundles to the FHIR server (replace "<SERVER\_URL>" with the actual URL):
-```bash
-#!/bin/sh
+Start the HAPI FHIR JPA server:
 
-cd synthea/output/fhir
-
-for f in *.json;
-  do curl -X POST -H "Content-Type: application/json" -d @$f <SERVER_URL>/fhir > /dev/null;
-done
+```sh
+docker volume create --name=hapi-db
+docker-compose up -d hapi-jpa
 ```
+
+After the server has started (check `docker-compose logs -f hapi-jpa` to verify the startup has finished) you can run the Shell script `scripty/import_fhir.sh`, which uses [cURL](https://curl.haxx.se) to send the FHIR bundles to the FHIR server (localhost).
 
 ## Importing the CSV files into a PostgreSQL database
 
-Use the SQL file `csv_schema.sql` to create the required tables and import the CSV files (e.g., with pgAdmin's import functionality).
+When starting the Docker service `csv-db` all CSV files will be imported into the PostgreSQL database (this may take several minutes).
+
+```sh
+docker volume create --name=csv-db
+docker-compose up -d csv-db
+```
 
 ## Executing the PhenoMan test script
 
-Place a release of the PhenoMan inside the `phenoman_test` folder (Version 0.3.3 is used here as an example) and execute the following CLI lines (Java JDK required):
-
-```bash
-cd phenoman_test
-javac -cp phenoman-0.3.3.jar MIBE.java
-java -cp "phenoman-0.3.3.jar;." MIBE
-```
+Place a release of the PhenoMan inside the `phenoman_test` folder (Version 0.3.3 is used here as an example) and execute the Shell script `scripts/execute_phenoman.sh` (Java JDK required).
 
 The number of matching patients will be printed to STDOUT.
 
 ## Executing Gold Standard SQL and comparing results with PhenoMan
 
-Execute the SQL query within `gold_standard_script.sql`. The Script will return the number of matching patients. The number should match the result of PhenoMan.
+Execute the SQL query `scripts/gold_standard_query.sql`. The Script will return the number of matching patients. The number should match the result of PhenoMan.
