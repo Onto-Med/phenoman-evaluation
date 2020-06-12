@@ -1,20 +1,44 @@
 version: '3.1'
 
 services:
-  db:
+  csv-db:
+    image: postgres
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: example
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./csv_db:/docker-entrypoint-initdb.d
+      - csv-db:/var/lib/postgresql/data
+      - ./synthea/output/csv:/csv
+    command: -c listen_addresses='*'
+
+  hapi-db:
     image: postgres
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_DB: hapi
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    command: -c listen_addresses='*'
     volumes:
-      - ./csv_db:/docker-entrypoint-initdb.d
-      - ./synthea/output/csv:/csv
+      - hapi-db:/var/lib/postgresql/data
 
-  hapi_jpa:
+  hapi-jpa:
     image: knoppiks/hapi-jpa
     ports:
-      - 80:8080
+      - 8080:8080
+    environment:
+      CATALINA_OPTS: -Dhapi.properties=/hapi.properties
     volumes:
-      - ./synthea/output/fhir:/fhir
-      - ./scripts:/scripts
+      - ./hapi.properties:/hapi.properties
+    links:
+      - hapi-db
+
+volumes:
+  csv-db:
+    external: true
+  hapi-db:
+    external: true
