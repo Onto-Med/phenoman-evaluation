@@ -4,11 +4,8 @@ FROM (
 		FROM patients
 			JOIN allergies a ON (a.patient = id)
 		WHERE
-			-- inclusion: female subjects
-			gender = 'F'
-
 			-- inclusion: age >= 18 and < 40 years
-			AND extract(year FROM age(birthdate)) BETWEEN 18 AND 39
+			extract(year FROM age(birthdate)) BETWEEN 18 AND 39
 
 			-- inclusion: allergy to grass pollen
 			AND a.code = '418689008'

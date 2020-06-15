@@ -8,14 +8,14 @@ FROM (
 			-- inclusion: female subjects
 			gender = 'F'
 
-			-- inclusion: age >= 18 and < 40 years
-			AND extract(year FROM age(birthdate)) BETWEEN 18 AND 39
+			-- inclusion: age >= 18 and < 60 years
+			AND extract(year FROM age(birthdate)) BETWEEN 18 AND 59
 
 			-- inclusion: allergy to animal dander
 			AND a.code = '232347008'
 
-			-- inclusion: codition asthma
-			AND c.code = '195967001'
+			-- inclusion: codition acute bronchitis
+			AND c.code = '10509002'
 
 		-- exclusion: tobacco smoking status = current every day smoker
 		EXCEPT (
