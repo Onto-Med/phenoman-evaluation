@@ -1,3 +1,7 @@
+-- Patient?_elements=id&birthdate=gt1960-06-17T14:50:18&birthdate=le1980-06-17T14:50:18&gender=female
+-- Condition?_elements=subject&code=http://snomed.info/sct|44054006
+-- Observation?_elements=subject&code=http://loinc.org|4548-4&value-quantity=ge6|http://unitsofmeasure.org|%
+
 SELECT count(DISTINCT id)
 FROM patients
 	JOIN conditions c ON (c.patient = id)

@@ -1,3 +1,8 @@
+-- Patient?_elements=id&birthdate=gt1960-06-17T14:45:24&birthdate=le1980-06-17T14:45:24&gender=male
+-- Condition?_elements=subject&code=http://snomed.info/sct|44054006
+-- Observation?_elements=subject&code=http://loinc.org|39156-5&value-quantity=ge35&value-quantity=lt70
+-- Observation?_elements=subject&code=http://loinc.org|72166-2&value-concept=http://snomed.info/sct|449868002
+
 SELECT count(DISTINCT id)
 FROM (
 		SELECT id

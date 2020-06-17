@@ -1,3 +1,7 @@
+-- Patient?_elements=id&birthdate=gt1960-06-17T15:08:54&birthdate=le2002-06-17T15:08:54&gender=male
+-- Condition?_elements=subject&code=http://snomed.info/sct|10509002
+-- AllergyIntolerance?_elements=patient&code=http://snomed.info/sct|418689008
+
 SELECT count(DISTINCT id)
 FROM (
 		SELECT id
