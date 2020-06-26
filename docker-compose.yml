@@ -16,6 +16,7 @@ services:
 
   hapi-db:
     image: postgres
+    shm_size: 1g
     ports:
       - 5432:5432
     environment:
