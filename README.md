@@ -5,7 +5,7 @@
 1. Download Synthea(TM) from https://synthetichealth.github.io/synthea/build/libs/synthea-with-dependencies.jar
    and place it inside the `synthea` folder. We used version `v2.5.0` for this evaluation.
 2. Open a terminal and execute the following commands (Java JRE or JDK required, replace ":" with ";" on a Windows machine):
-```bash
+```sh
 cd synthea
 java -jar synthea-with-dependencies.jar -s 43627 -p 100000 -m hypertension:metabolic*:wellness*:asthma:bronchitis:allerg* -c synthea.properties
 ```
@@ -31,13 +31,14 @@ docker volume create --name=hapi-db
 docker-compose up -d
 ```
 
-After the server has started (check `docker-compose logs -f hapi-jpa` to verify the startup has finished) you can run the Shell script `scripts/import_fhir.sh`, which uses [cURL](https://curl.haxx.se) to send the FHIR bundles to the FHIR server (localhost).
+After the server has started (check `docker-compose logs -f hapi-jpa` to verify the startup has finished) you can run the Shell script `scripts/import_fhir.sh`, which uses [cURL](https://curl.haxx.se) to send the FHIR bundles to the FHIR server (localhost:8080).
 
 ## Executing the PhenoMan test scripts
 
--- TODO --
+The example queries are located in the package `care.smith.phep.phenoman.core.examples.queries` of [phenoman-core](https://github.com/Onto-Med/phenoman-core).
+Each of the query classes has a static `main()` method, which can be called with the additional Java VM option `-Dhds-url=http://localhost:8080/fhir`.
 
-The number of matching patients will be printed to STDOUT.
+The numbers of matching patients as well as execution times will be printed to STDOUT.
 
 ## Executing test SQL queries and comparing results with PhenoMan
 
