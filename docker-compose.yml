@@ -1,19 +1,6 @@
 version: '3.1'
 
 services:
-  csv-db:
-    image: postgres
-    ports:
-      - 5433:5432
-    environment:
-      POSTGRES_PASSWORD: example
-      PGDATA: /var/lib/postgresql/data/pgdata
-    volumes:
-      - ./csv_db:/docker-entrypoint-initdb.d
-      - csv-db:/var/lib/postgresql/data
-      - ./synthea/output/csv:/csv
-    command: -c listen_addresses='*'
-
   hapi-db:
     image: postgres
     shm_size: 1g
@@ -39,7 +26,5 @@ services:
       - hapi-db
 
 volumes:
-  csv-db:
-    external: true
   hapi-db:
     external: true
