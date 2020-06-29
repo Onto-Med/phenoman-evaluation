@@ -5,7 +5,10 @@
 1. Download Synthea(TM) from https://synthetichealth.github.io/synthea/build/libs/synthea-with-dependencies.jar. We used version `v2.5.0` for this evaluation.
 2. Open a terminal and execute the following commands (Java JRE or JDK required, replace ":" with ";" on a Windows machine):
 ```sh
-java -jar synthea-with-dependencies.jar -s 43627 -p 100000 -m hypertension:metabolic*:wellness*:asthma:bronchitis:allerg*
+java -jar synthea-with-dependencies.jar \
+  -s 43627 \
+  -p 100000 \
+  -m hypertension:metabolic*:wellness*:asthma:bronchitis:allerg*
 ```
 Output in STDOUT should be: `{alive=99997, dead=2589}`
 
