@@ -2,12 +2,10 @@
 
 ## Creating a population with Synthea(TM):
 
-1. Download Synthea(TM) from https://synthetichealth.github.io/synthea/build/libs/synthea-with-dependencies.jar
-   and place it inside the `synthea` folder. We used version `v2.5.0` for this evaluation.
+1. Download Synthea(TM) from https://synthetichealth.github.io/synthea/build/libs/synthea-with-dependencies.jar. We used version `v2.5.0` for this evaluation.
 2. Open a terminal and execute the following commands (Java JRE or JDK required, replace ":" with ";" on a Windows machine):
 ```sh
-cd synthea
-java -jar synthea-with-dependencies.jar -s 43627 -p 100000 -m hypertension:metabolic*:wellness*:asthma:bronchitis:allerg* -c synthea.properties
+java -jar synthea-with-dependencies.jar -s 43627 -p 100000 -m hypertension:metabolic*:wellness*:asthma:bronchitis:allerg*
 ```
 Output in STDOUT should be: `{alive=99997, dead=2589}`
 
@@ -15,9 +13,8 @@ Detailed description of the arguments:
 * `-s 43627` -> set a seed "43627", so that the generated patient data is reproducible
 * `-p 100000` -> number of patients the population will consist of
 * `-m ...` -> Synthea modules filter
-* `-c synthea.properties` -> path to configuration file with additional configurations for Synthea(TM)
 
-Resulting patient data will be placed inside the folder `synthea/output/fhir`.
+Resulting patient data will be placed inside the folder `output/fhir`.
 
 ## Importing the FHIR resources into a FHIR Server
 
