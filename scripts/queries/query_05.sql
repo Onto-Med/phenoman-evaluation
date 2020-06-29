@@ -1,5 +1,5 @@
 -- Patient?_elements=id&birthdate=gt1960-06-17T14:55:32&birthdate=le1980-06-17T14:55:32&gender=male
--- Observation?_elements=subject&code=http://loinc.org|39156-5&value-quantity=ge26&value-quantity=lt35
+-- Observation?_elements=subject&code=http://loinc.org|39156-5&value-quantity=ge26&value-quantity=lt35&date=ge2020-05-17T14:56:01
 -- Condition?_elements=subject&code=http://snomed.info/sct|44054006
 -- Condition?_elements=subject&code=http://snomed.info/sct|49436004,http://snomed.info/sct|271737000,http://snomed.info/sct|22298006,http://snomed.info/sct|230690007
 
