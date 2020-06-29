@@ -43,3 +43,25 @@ The number of matching patients will be printed to STDOUT.
 
 Execute the SQL queries in `scripts/queries`. The queries will return numbers of matching patients. The numbers should match the result of PhenoMan.
 Use the connection string `postgresql://admin:admin@localhost:5432/hapi` to establish a connection to the HAPI FHIR JPA database (PostgreSQL).
+
+## Results
+
+We imported **66,018 subjects** into the HAPI FHIR JPA Server and compared the results of the PhenoMan with the results of the SQL queries.
+The following table contains the number of matching subjects and the execution times. The results of each query pair were identical.
+
+* **Number of subjects:** 66,018
+* **Execution Date:** 2020-06-28
+* **FHIR Page Size:** 200
+
+|Query No.|Count|PhenoMan [s]|SQL [s]|Difference [%]|
+|---------|-----|------------|-------|--------------|
+|1        |113  |309.035     |51.109 |83.46         |
+|2        |119  |301.635     |49.930 |83.45         |
+|3        |  6  |429.378     |157    |63.44         |
+|4        |684  |360.949     |153    |57.61         |
+|5        |  8  |525.922     |257    |51.13         |
+|6        | 10  | 98.322     |39.905 |59.42         |
+|7        | 18  | 14.980     | 7.652 |48.92         |
+|8        | 11  |173.534     |14.397 |91.70         |
+|9        |  4  |265.080     |31.404 |88.15         |
+|10       |  6  |327.277     |28.345 |91.34         |
